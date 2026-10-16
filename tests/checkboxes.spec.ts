@@ -17,3 +17,8 @@ test.describe('Checkboxes', () => {
     await expect(checkbox2).toBeChecked();
   });
 });
+
+
+// Steps 5-6: Check checkbox 2 and verify
+await checkbox2.check();
+await expect(checkbox2).toBeChecked();
