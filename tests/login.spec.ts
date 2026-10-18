@@ -1,4 +1,4 @@
-import { test } from '../fixtures/base';
+import { test, expect } from '../fixtures/base';
 
 test.describe('Form Authentication', () => {
   test('navigate to login page', async ({ loginPage }) => {
@@ -6,25 +6,19 @@ test.describe('Form Authentication', () => {
     await loginPage.expectLoaded();
   });
 
-  test('TC01: Login successful with valid credentials', async ({ loginPage, secureAreaPage }) => {
-    // Steps 1-2: Open browser (handled by Playwright) & navigate to login page
+  test('TC01: Form Authentication - Login successful with valid credentials', async ({ page, loginPage }) => {
     await loginPage.navigate();
-
-    // Steps 3-5: Fill username, password, click Login
-    await loginPage.login('tomsmith', 'SuperSecretPassword!');
-
-    // Step 6: Verify secure area appears with success message
-    await secureAreaPage.expectLoggedIn('You logged into a secure area!');
+    await loginPage.usernameInput.fill('tomsmith');
+    await loginPage.passwordInput.fill('SuperSecretPassword!');
+    await loginPage.loginButton.click();
+    await expect(page.getByText('You logged into a secure area!')).toBeVisible();
   });
 
-  test('TC02: Login fail with invalid credentials', async ({ loginPage }) => {
-    // Steps 1-2: Open browser (handled by Playwright) & navigate to login page
+  test('TC02: Form Authentication - Login fail with invalid credentials', async ({ page, loginPage }) => {
     await loginPage.navigate();
-
-    // Steps 3-5: Fill invalid username, password, click Login
-    await loginPage.login('toms', 'SuperSecretPassword!');
-
-    // Step 6: Verify error flash message appears
-    await loginPage.expectErrorMessage('Your username is invalid!');
+    await loginPage.usernameInput.fill('toms');
+    await loginPage.passwordInput.fill('SuperSecretPassword!');
+    await loginPage.loginButton.click();
+    await expect(page.getByText('Your username is invalid!')).toBeVisible();
   });
 });

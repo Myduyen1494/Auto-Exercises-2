@@ -2,14 +2,13 @@ import { test, expect } from '../fixtures/base';
 
 test.describe('Dropdown', () => {
     test('TC04: Select an option', async ({ page }) => {
-        // Steps 1-2: Open browser (handled by Playwright) & navigate to dropdown page
-        await page.goto('/dropdown', { waitUntil: 'domcontentloaded' });
+        await page.goto('/dropdown');
 
-        const dropdown = page.locator('select');
+        const dropdown = page.getByRole('combobox');
         const option1 = page.getByRole('option', { name: 'Option 1' });
+        const option2 = page.getByRole('option', { name: 'Option 2' });
 
-        // Steps 3-4: Select option 1 and verify
         await dropdown.selectOption({ label: 'Option 1' });
-        await expect(option1).toBeChecked();
+        await expect(dropdown).toHaveValue('1');
     });
 });
