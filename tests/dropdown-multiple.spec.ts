@@ -14,3 +14,8 @@ test.describe('Dropdown', () => {
     await expect(option2).toBeSelected();
   });
 });
+
+
+await page.getByRole('listbox').selectOption(['Banana', 'Orange']);
+await expect(page.getByRole('option', { name: 'Banana' })).toBeSelected();
+await expect(page.getByRole('option', { name: 'Orange' })).toBeSelected();
