@@ -1,12 +1,7 @@
-import { test, expect } from '../fixtures/base';
+import { test, expect } from '../fixtures/checkboxes';
 
 test.describe('Checkboxes', () => {
-  test('TC03: Check to a box', async ({ page }) => {
-
-    await page.goto('/checkboxes');
-
-    const checkbox1 = page.getByRole('checkbox').nth(0);
-    const checkbox2 = page.getByRole('checkbox').nth(1);
+  test('TC03: Check to a box', async ({ checkboxes: { checkbox1, checkbox2 } }) => {
 
     await checkbox1.check();
     await expect(checkbox1).toBeChecked();
