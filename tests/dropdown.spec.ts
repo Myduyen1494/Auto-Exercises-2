@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/dropdown';
+import { test, expect } from '../fixtures/dropdown.fixture';
 
 test.describe('Dropdown', () => {
     test('TC04: Select an option', async ({ dropdownPage: { dropdown, option1, option2 } }) => {

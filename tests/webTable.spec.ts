@@ -1,14 +1,22 @@
-import { test, expect } from '../fixtures/webTable';
+import { test, expect } from '../fixtures/webTable.fixture';
 
 test.describe('Web Table', () => {
-    test('TC08: Web Table - Validate largest due person from a table', async ({ webTable: { rows, dueCells } }) => {
+    test('TC08: Web Table - Validate largest due person from a table', async ({ webTablePage: { rows } }) => {
 
-        const dueTexts = await dueCells.allInnerTexts();
-        const dues = dueTexts.map(text => Number(text.replace('$', '')));
+        let largestDue = 0;
+        let largestRow = rows.first();
 
-        const largestDue = Math.max(...dues);
-        const largestIndex = dues.indexOf(largestDue);
-        const largestRow = rows.nth(largestIndex);
+        for (let i = 0; i < await rows.count(); i++) {
+            const row = rows.nth(i);
+            const dueCell = row.getByRole('cell').nth(3);
+            const dueText = await dueCell.innerText();
+            const due = Number(dueText.replace('$', ''));
+
+            if (due > largestDue) {
+                largestDue = due;
+                largestRow = row;
+            }
+        }
 
         const cells = largestRow.getByRole('cell');
         const lastName = cells.nth(0);

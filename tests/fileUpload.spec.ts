@@ -1,7 +1,7 @@
-import { test, expect } from '../fixtures/fileUpload';
+import { test, expect } from '../fixtures/fileUpload.fixture';
 
 test.describe('File Upload', () => {
-    test('TC07: Upload a file', async ({ page, fileUpload: { chooseFile, uploadButton } }) => {
+    test('TC07: Upload a file', async ({ page, fileUploadPage: { chooseFile, uploadButton } }) => {
 
         await chooseFile.setInputFiles('download/bb.txt');
 

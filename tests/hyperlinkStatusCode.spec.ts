@@ -1,7 +1,7 @@
-import { test, expect } from '../fixtures/hyperlink';
+import { test, expect } from '../fixtures/statusCodes.fixture';
 
 test.describe('Hyperlink', () => {
-    test('TC06: Hyperlink - Status codes navigation', async ({ page, statusCodeLinks: { link1, link2, link3, link4 } }) => {
+    test('TC06: Hyperlink - Status codes navigation', async ({ page, statusCodesPage: { link1, link2, link3, link4 } }) => {
 
         await link1.click();
         await expect(page).toHaveURL(/status_codes\/200/);

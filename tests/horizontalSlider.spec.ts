@@ -1,7 +1,7 @@
-import { test, expect } from '../fixtures/horizontalSlider';
+import { test, expect } from '../fixtures/horizontalSlider.fixture';
 
 test.describe('Horizontal Slider', () => {
-    test('TC10: Horizontal Slider - Set value to 3.5', async ({ horizontalSlider: { slider, sliderValue } }) => {
+    test('TC10: Horizontal Slider - Set value to 3.5', async ({ horizontalSliderPage: { slider, sliderValue } }) => {
 
         await slider.focus();
 
