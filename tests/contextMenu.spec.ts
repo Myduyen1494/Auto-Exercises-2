@@ -1,16 +1,10 @@
 import { test, expect } from '../fixtures/contextMenu.fixture';
 
 test.describe('Context Menu', () => {
-    test('TC11: Right click - Context menu', async ({ page, contextMenuPage: { hotSpot } }) => {
+  test('TC11: Right click - Context menu', async ({ contextMenuPage }) => {
 
-        let alertMessage = '';
-        page.once('dialog', async dialog => {
-            alertMessage = dialog.message();
-            await dialog.dismiss();
-        });
+    const alertMessage = await contextMenuPage.rightClickHotSpot();
 
-        await hotSpot.click({ button: 'right' });
-
-        expect(alertMessage).toBe('You selected a context menu');
-    });
+    expect(alertMessage).toBe('You selected a context menu');
+  });
 });

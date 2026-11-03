@@ -12,4 +12,16 @@ export class ContextMenuPage extends BasePage {
   async open() {
     await this.goto('/context_menu');
   }
+
+  async rightClickHotSpot() {
+    let alertMessage = '';
+    this.page.once('dialog', async dialog => {
+      alertMessage = dialog.message();
+      await dialog.dismiss();
+    });
+
+    await this.hotSpot.click({ button: 'right' });
+
+    return alertMessage;
+  }
 }
