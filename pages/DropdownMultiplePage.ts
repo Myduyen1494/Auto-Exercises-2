@@ -16,4 +16,8 @@ export class DropdownMultiplePage extends BasePage {
   async open() {
     await this.goto('https://output.jsbin.com/osebed/2');
   }
+
+  async selectByLabels(labels: string[]) {
+    await this.dropdown.selectOption(labels);
+  }
 }

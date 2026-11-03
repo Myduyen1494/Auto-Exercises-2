@@ -14,4 +14,31 @@ export class WebTablePage extends BasePage {
   async open() {
     await this.goto('/tables');
   }
+
+  async findLargestDueRow() {
+    let largestDue = 0;
+    let largestRow = this.rows.first();
+
+    for (let i = 0; i < await this.rows.count(); i++) {
+      const row = this.rows.nth(i);
+      const dueCell = row.getByRole('cell').nth(3);
+      const dueText = await dueCell.innerText();
+      const due = Number(dueText.replace('$', ''));
+
+      if (due > largestDue) {
+        largestDue = due;
+        largestRow = row;
+      }
+    }
+
+    return largestRow;
+  }
+
+  lastName(row: Locator) {
+    return row.getByRole('cell').nth(0);
+  }
+
+  firstName(row: Locator) {
+    return row.getByRole('cell').nth(1);
+  }
 }

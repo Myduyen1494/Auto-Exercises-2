@@ -1,12 +1,10 @@
 import { test, expect } from '../fixtures/fileUpload.fixture';
 
 test.describe('File Upload', () => {
-    test('TC07: Upload a file', async ({ page, fileUploadPage: { chooseFile, uploadButton } }) => {
+  test('TC07: Upload a file', async ({ fileUploadPage }) => {
 
-        await chooseFile.setInputFiles('download/bb.txt');
+    await fileUploadPage.upload('download/bb.txt');
 
-        await uploadButton.click();
-
-        await expect(page.getByText('bb.txt')).toBeVisible();
-    });
+    await expect(fileUploadPage.uploadedFile('bb.txt')).toBeVisible();
+  });
 });

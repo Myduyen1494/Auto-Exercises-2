@@ -14,4 +14,8 @@ export class DragAndDropPage extends BasePage {
   async open() {
     await this.goto('/drag_and_drop');
   }
+
+  async dragAToB() {
+    await this.columnA.dragTo(this.columnB);
+  }
 }

@@ -16,4 +16,8 @@ export class DropdownPage extends BasePage {
   async open() {
     await this.goto('/dropdown');
   }
+
+  async selectByLabel(label: string) {
+    await this.dropdown.selectOption({ label });
+  }
 }

@@ -10,19 +10,15 @@ test.describe('Form Authentication', () => {
     await expect(loginPage.loginButton).toBeVisible();
   });
 
-  test('TC01: Form Authentication - Login successful with valid credentials', async ({ page, loginPage }) => {
+  test('TC01: Form Authentication - Login successful with valid credentials', async ({ loginPage }) => {
     await loginPage.navigate();
-    await loginPage.usernameInput.fill('tomsmith');
-    await loginPage.passwordInput.fill('SuperSecretPassword!');
-    await loginPage.loginButton.click();
-    await expect(page.getByText('You logged into a secure area!')).toBeVisible();
+    await loginPage.login('tomsmith', 'SuperSecretPassword!');
+    await expect(loginPage.successMessage).toBeVisible();
   });
 
-  test('TC02: Form Authentication - Login fail with invalid credentials', async ({ page, loginPage }) => {
+  test('TC02: Form Authentication - Login fail with invalid credentials', async ({ loginPage }) => {
     await loginPage.navigate();
-    await loginPage.usernameInput.fill('toms');
-    await loginPage.passwordInput.fill('SuperSecretPassword!');
-    await loginPage.loginButton.click();
-    await expect(page.getByText('Your username is invalid!')).toBeVisible();
+    await loginPage.login('toms', 'SuperSecretPassword!');
+    await expect(loginPage.invalidUsernameMessage).toBeVisible();
   });
 });

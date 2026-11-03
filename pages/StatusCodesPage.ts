@@ -18,4 +18,24 @@ export class StatusCodesPage extends BasePage {
   async open() {
     await this.goto('/status_codes');
   }
+
+  async clickLink1() {
+    await this.link1.click();
+  }
+
+  async clickLink2() {
+    await this.link2.click();
+  }
+
+  async clickLink3() {
+    await this.link3.click();
+  }
+
+  async clickLink4() {
+    await this.link4.click();
+  }
+
+  async goBack() {
+    await this.page.goBack();
+  }
 }

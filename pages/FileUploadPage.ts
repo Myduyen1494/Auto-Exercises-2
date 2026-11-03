@@ -14,4 +14,13 @@ export class FileUploadPage extends BasePage {
   async open() {
     await this.goto('/upload');
   }
+
+  async upload(filePath: string) {
+    await this.chooseFile.setInputFiles(filePath);
+    await this.uploadButton.click();
+  }
+
+  uploadedFile(fileName: string) {
+    return this.page.getByText(fileName);
+  }
 }

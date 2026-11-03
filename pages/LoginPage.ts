@@ -6,6 +6,8 @@ export class LoginPage extends BasePage {
   readonly usernameInput: Locator;
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
+  readonly successMessage: Locator;
+  readonly invalidUsernameMessage: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -13,6 +15,8 @@ export class LoginPage extends BasePage {
     this.usernameInput = page.getByRole('textbox', { name: 'Username' });
     this.passwordInput = page.getByRole('textbox', { name: 'Password' });
     this.loginButton = page.getByRole('button', { name: 'Login' });
+    this.successMessage = page.getByText('You logged into a secure area!');
+    this.invalidUsernameMessage = page.getByText('Your username is invalid!');
   }
 
   async navigate() {

@@ -14,4 +14,12 @@ export class CheckboxesPage extends BasePage {
   async open() {
     await this.goto('/checkboxes');
   }
+
+  async checkCheckbox1() {
+    await this.checkbox1.check();
+  }
+
+  async checkCheckbox2() {
+    await this.checkbox2.check();
+  }
 }

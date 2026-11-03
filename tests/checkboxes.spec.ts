@@ -1,12 +1,12 @@
 import { test, expect } from '../fixtures/checkboxes.fixture';
 
 test.describe('Checkboxes', () => {
-  test('TC03: Check to a box', async ({ checkboxesPage: { checkbox1, checkbox2 } }) => {
+  test('TC03: Check to a box', async ({ checkboxesPage }) => {
 
-    await checkbox1.check();
-    await expect(checkbox1).toBeChecked();
+    await checkboxesPage.checkCheckbox1();
+    await expect(checkboxesPage.checkbox1).toBeChecked();
 
-    await checkbox2.check();
-    await expect(checkbox2).toBeChecked();
+    await checkboxesPage.checkCheckbox2();
+    await expect(checkboxesPage.checkbox2).toBeChecked();
   });
 });

@@ -14,4 +14,12 @@ export class HorizontalSliderPage extends BasePage {
   async open() {
     await this.goto('/horizontal_slider');
   }
+
+  async increase(times: number) {
+    await this.slider.focus();
+
+    for (let i = 0; i < times; i++) {
+      await this.slider.press('ArrowRight');
+    }
+  }
 }

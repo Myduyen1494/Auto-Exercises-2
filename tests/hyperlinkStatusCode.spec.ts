@@ -1,22 +1,22 @@
 import { test, expect } from '../fixtures/statusCodes.fixture';
 
 test.describe('Hyperlink', () => {
-    test('TC06: Hyperlink - Status codes navigation', async ({ page, statusCodesPage: { link1, link2, link3, link4 } }) => {
+  test('TC06: Hyperlink - Status codes navigation', async ({ page, statusCodesPage }) => {
 
-        await link1.click();
-        await expect(page).toHaveURL(/status_codes\/200/);
-        await page.goBack();
+    await statusCodesPage.clickLink1();
+    await expect(page).toHaveURL(/status_codes\/200/);
+    await statusCodesPage.goBack();
 
-        await link2.click();
-        await expect(page).toHaveURL(/status_codes\/301/);
-        await page.goBack();
+    await statusCodesPage.clickLink2();
+    await expect(page).toHaveURL(/status_codes\/301/);
+    await statusCodesPage.goBack();
 
-        await link3.click();
-        await expect(page).toHaveURL(/status_codes\/404/);
-        await page.goBack();
+    await statusCodesPage.clickLink3();
+    await expect(page).toHaveURL(/status_codes\/404/);
+    await statusCodesPage.goBack();
 
-        await link4.click();
-        await expect(page).toHaveURL(/status_codes\/500/);
+    await statusCodesPage.clickLink4();
+    await expect(page).toHaveURL(/status_codes\/500/);
 
-    });
+  });
 });
