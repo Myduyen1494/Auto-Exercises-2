@@ -7,9 +7,9 @@ test.describe('Broken Images', () => {
     // Steps 3-5: Get every <img>, read its src and send a GET request for each one; collect the status codes
     const imageStatuses = await brokenImagesPage.getImageStatuses();
 
-    // Step 6: Verify each image returns status code 200 (this fails for the intentionally broken images)
+    // Assertion: Verify each image returns status code 200 (soft assertion: checks every image and reports all broken ones; fails for the intentionally broken images)
     for (const { src, status } of imageStatuses) {
-      expect(status, `${src} should return 200`).toBe(200);
+      expect.soft(status,`${src} should return 200`).toBe(200);
     }
   });
 });

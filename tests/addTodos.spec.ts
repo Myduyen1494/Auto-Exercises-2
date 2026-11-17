@@ -9,9 +9,9 @@ test.describe('TodoMVC', () => {
     // Step 4: Type "Buy groceries" in the input and press Enter
     await addTodosPage.addTodo('Buy groceries');
 
-    // Step 5: Verify the list has exactly 2 items
+    // Assertion: Verify the list has exactly 2 items
     await expect(addTodosPage.todoItems).toHaveCount(2);
-    // Step 6: Verify the item texts are ["Buy milk", "Buy groceries"] in order
+    // Assertion: Verify the item texts are ["Buy milk", "Buy groceries"] in order
     await expect(addTodosPage.todoItems).toHaveText(['Buy milk', 'Buy groceries']);
   });
 });

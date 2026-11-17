@@ -10,7 +10,7 @@ test.describe('TodoMVC', () => {
     // Steps 4-5: Hover on the "Pay bills" item and click the "x" delete button that appears on hover
     await deleteTodoPage.deleteTodo('Pay bills');
 
-    // Step 6: Verify "Pay bills" is no longer in the list
+    // Assertion: Verify "Pay bills" is no longer in the list
     await expect(deleteTodoPage.todo('Pay bills')).toHaveCount(0);
   });
 });

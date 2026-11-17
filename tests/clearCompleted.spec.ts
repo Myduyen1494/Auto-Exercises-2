@@ -15,9 +15,9 @@ test.describe('TodoMVC', () => {
     // Step 6: Click the "Clear completed" button
     await clearCompletedPage.clearCompletedTodos();
 
-    // Step 7: Verify only "Task A" remains in the list
+    // Assertion: Verify only "Task A" remains in the list
     await expect(clearCompletedPage.todoItems).toHaveText(['Task A']);
-    // Step 8: Verify the footer shows "1 item left"
+    // Assertion: Verify the footer shows "1 item left"
     await expect(clearCompletedPage.itemsLeft).toContainText('1 item left');
   });
 });

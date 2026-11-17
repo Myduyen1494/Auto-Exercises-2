@@ -10,7 +10,7 @@ test.describe('TodoMVC', () => {
     // Steps 4-6: Double-click the label, replace the text with "Walk the dog (30 min)" and press Enter to save
     await editTodoPage.rename('Walk the dog', 'Walk the dog (30 min)');
 
-    // Step 7: Verify the todo label now displays "Walk the dog (30 min)"
+    // Assertion: Verify the todo label now displays "Walk the dog (30 min)"
     await expect(editTodoPage.todoItems).toHaveText(['Walk the dog (30 min)']);
   });
 });
